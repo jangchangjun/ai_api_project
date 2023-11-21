@@ -324,7 +324,7 @@ Spotify API
 
 </details>
 
-#### 사진기반 추천화면
+#### 사진기반 추천 화면
 
  <details><summary>
 </summary>
@@ -341,6 +341,7 @@ Spotify API
 ![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/sp3.png)   
 
 </details>
+
 ## 4. 실행결과
 
 
