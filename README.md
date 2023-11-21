@@ -16,6 +16,10 @@ Spotify API
 ### 3.1 출력문
 
  ## 기본 화면
+ <details><summary>
+</summary>
+
+
  ```
  <!DOCTYPE html>
 <html lang="en">
@@ -230,6 +234,7 @@ Spotify API
 
 </html>
  ```
+</details>
 ## 플레이리스트 생성 화면
 ```
 <!DOCTYPE html>
