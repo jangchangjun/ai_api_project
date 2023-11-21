@@ -314,9 +314,9 @@ Spotify API
 
 ![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/sp1.png)   
 
-![onealog](/assets/readme/sp2.png)   
+![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/sp2.png)   
 
-![onealog](/assets/readme/sp3.png)   
+![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/sp3.png)   
 
 
 ## 4. 실행결과
