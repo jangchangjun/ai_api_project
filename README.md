@@ -296,13 +296,13 @@ Spotify API
 사용자의 취향에 맞춰 플레이리스트를 생성해내는 서비스 뿐만 아니라 사진을 기반으로한 플레이리스트 생성 또한 해보고자 한다.
 ### 3.3 웹페이지 구성
 
-![onealog]([/assets/readme/sp1.png](https://github.com/jangchangjun/ai_api_project/blob/main/sp1.png))   
+![onealog](/assets/readme/sp1.png)   
 
 ![onealog](/assets/readme/sp2.png)   
 
 ![onealog](/assets/readme/sp3.png)   
 
-</p>
+
 ## 4. 실행결과
 
 
