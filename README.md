@@ -298,12 +298,10 @@ Spotify API
 
 ![onealog](/assets/readme/sp1.png)   
 
-<p align="center">
-<img src = "./sp2.png" width = 300>
-</p>
+![onealog](/assets/readme/sp2.png)   
 
-<p align="center">
-<img src = "./sp3.png" width = 300>
+![onealog](/assets/readme/sp3.png)   
+
 </p>
 ## 4. 실행결과
 
