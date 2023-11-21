@@ -238,6 +238,7 @@ Spotify API
 
  <details><summary>
 </summary>
+
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -259,6 +260,10 @@ Spotify API
 </details>
 
 ## 사진기반 추천 플레이리스트
+
+ <details><summary>
+</summary>
+
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -300,6 +305,8 @@ Spotify API
 
 </html>
 ```
+
+</details>
 
 ### 3.2 추가내용
 사용자의 취향에 맞춰 플레이리스트를 생성해내는 서비스 뿐만 아니라 사진을 기반으로한 플레이리스트 생성 또한 해보고자 한다.
