@@ -255,6 +255,7 @@ Spotify API
 </body>
 </html>
 ```
+
 </details>
 
 ## 사진기반 추천 플레이리스트
