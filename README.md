@@ -138,10 +138,8 @@ Spotify API
             var minValue = parseInt(minInput.value);
             var maxValue = parseInt(maxInput.value);
 
-            // Check if the input values are valid
             if (!isNaN(minValue) && !isNaN(maxValue) && minValue >= 30 && maxValue <= 300 && minValue <= maxValue) {
                 alert('BPM값이 적용되었습니다! \n최소치: ' + minValue + '\n최대치: ' + maxValue);
-                // You can add logic to store or use the values as needed
             } else {
                 alert('BPM값을 다시 입력해주세요. 30~300값을 입력해야합니다');
             }
@@ -166,11 +164,9 @@ Spotify API
 
             var minValue = parseInt(minInput.value);
             var maxValue = parseInt(maxInput.value);
-
-            // Check if the input values are valid
+   
             if (!isNaN(minValue) && !isNaN(maxValue) && minValue >= 0 && maxValue <= 100 && minValue <= maxValue) {
                 alert('인기도값이 적용되었습니다! \n최소치: ' + minValue + '\n최대치: ' + maxValue);
-                // You can add logic to store or use the values as needed
             } else {
                 alert('인기도값을 다시 입력해주세요. 0~100값을 입력해야합니다');
             }
@@ -196,10 +192,8 @@ Spotify API
             var minValue = parseFloat(minInput.value).toFixed(2);
             var maxValue = parseFloat(maxInput.value).toFixed(2);
 
-            // Check if the input values are valid
             if (!isNaN(minValue) && !isNaN(maxValue) && minValue >= 0 && maxValue <= 1 && minValue <= maxValue) {
                 alert('에너지값이 적용되었습니다! \n최소치: ' + minValue + '\n최대치: ' + maxValue);
-                // You can add logic to store or use the values as needed
             } else {
                 alert('에너지값을 다시 입력해주세요. 0~1값을 입력해야합니다.');
             }
@@ -228,20 +222,20 @@ Spotify API
         function saveGenres() {
             var selectedGenres = [];
 
-            // Get all checkboxes
+       
             var checkboxes = document.querySelectorAll('.checkbox input[type="checkbox"]');
 
-            // Iterate through checkboxes to find selected ones
+            
             checkboxes.forEach(function (checkbox) {
                 if (checkbox.checked) {
                     selectedGenres.push(checkbox.id);
                 }
             });
 
-            // Show a popup alert with the selected genres
+          
             window.alert('선택한 장르 : ' + selectedGenres.join(', '));
 
-            // Prevent the form from actually submitting
+           
             return false;
         }
     </script>
@@ -258,6 +252,67 @@ Spotify API
 
 </html>
  ```
+## 플레이리스트 생성 화면
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="history.back()">뒤로 가기</button>
+      </div>
+    <h1>플레이리스트</h1>
+    
+</body>
+</html>
+```
+
+## 사진기반 추천 플레이리스트
+```
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="spotify.css">
+    <title>Music Explorer</title>
+</head>
+
+<body>
+    <div class="back_form">
+        <form id="back_form" action="login.html" method="get">
+            <input type="submit" value="뒤로가기" id="back">
+        </form>
+    </div>
+
+    <div class="spotify_form">
+        <form id="spotify_form" action="spotify.html" method="get">
+            <input type="submit" value="직접 선택해서 추천 받기" id="back">
+        </form>
+    </div>
+
+    <div class="photo_form">
+        <form id="photo_form" action="photolist.html" method="get">
+            <input type="submit" value="사진으로 추천 받기" id="back">
+        </form>
+    </div>
+
+    <h1>사진 추천</h1>
+
+    <form id="playlist_form" action="playlist.html" method="get">
+        <input type="submit" value="플레이리스트 생성" id="playlist">
+    </form>
+</body>
+
+
+</html>
+```
 
 ### 3.2 추가내용
 사용자의 취향에 맞춰 플레이리스트를 생성해내는 서비스 뿐만 아니라 부가적으로 사진을 기반으로한 플레이리스트 생성 또한 해보고자 한다.
