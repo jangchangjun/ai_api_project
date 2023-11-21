@@ -18,8 +18,6 @@ Spotify API
  ## 기본 화면
  <details><summary>
 </summary>
-
-
  ```
  <!DOCTYPE html>
 <html lang="en">
@@ -235,7 +233,11 @@ Spotify API
 </html>
  ```
 </details>
+
 ## 플레이리스트 생성 화면
+
+ <details><summary>
+</summary>
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -253,6 +255,7 @@ Spotify API
 </body>
 </html>
 ```
+</details>
 
 ## 사진기반 추천 플레이리스트
 ```
