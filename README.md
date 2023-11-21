@@ -42,7 +42,8 @@ Spotify API
 ### 3.3 웹페이지 구성
 
 <p align="center">
-<img src = "./sp1.png" width = 300>
+<img src = "![sp3](https://github.com/jangchangjun/ai_api_project/assets/100849835/91b4d692-d97f-4424-aa38-4a0b5c95f4d7)
+" width = 300>
 </p>
 
 <p align="center">
