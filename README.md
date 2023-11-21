@@ -18,7 +18,9 @@ Spotify API
  #### 기본 화면
  <details><summary>
 </summary>
+  
  ```
+  
  <!DOCTYPE html>
 <html lang="en">
 
