@@ -22,7 +22,7 @@
 예를 들어
 ![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/img/api1.png)   
 위 사진의 코드를 참고하여 토큰을 발급받아
-![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/img/api3.png)   
+![onealog](img/api3.png)
 위 사진처럼 데이터를 받아올 수 있으며,
 ![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/img/api4.png)   
 이와 같이 여러 데이터를 입력받아
