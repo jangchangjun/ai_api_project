@@ -20,6 +20,12 @@
 #### Spotify API
 -Spotify Api는 Spotify사 에서 릴리즈한 api로  access Token을 발급하여 노래 데이터 분석, 사용자 데이터 분석 뿐만 아니라 여러 데이터를 조합해 플레이리스트를 생성 할 수 있다.
 이 중 이 프로젝트에선ㄴ 노래 데이터가 분석된건 토대로 데이터 값을 입력해 플레이 리스트를 생성하겠찌~
+![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/api1.png)   
+사진의 코드를 참고하여 토큰을 발급받아
+![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/sp1.png)   
+위 사진처럼 데이터를 받아올 수 있으며,
+![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/sp1.png)   
+이러한 코드를 톹해 노래 추천 서비스를 제공받을 수 있다.
 
 ### 2.2 API의 입력과 출력 
 사용자 노래 추천의 기반이 되는 가수, 장르, 트랙 등의 값 뿐만 아니라 BPM, energy, popularity 등의 세세한 값 또한 입력되어 플레이리스트를 생성해낸다.
