@@ -20,11 +20,11 @@
 #### Spotify API
 -Spotify Api는 Spotify사 에서 릴리즈한 api로  access Token을 발급하여 노래 데이터 분석, 사용자 데이터 분석 뿐만 아니라 여러 데이터를 조합해 플레이리스트를 생성 할 수 있다.
 예를 들어
-![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/api1.png)   
+![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/img/api1.png)   
 위 사진의 코드를 참고하여 토큰을 발급받아
-![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/api2.png)   
+![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/img/api2.png)   
 위 사진처럼 데이터를 받아올 수 있으며,
-![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/api3.png)   
+![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/img/api3.png)   
 이러한 코드를 톹해 노래 추천 서비스를 제공받을 수 있다.
 
 ### 2.2 API의 입력과 출력 
@@ -39,7 +39,7 @@
 </summary>
 
   
-![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/sp1.png)   
+![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/img/api1.png)   
 
 </details>
 
@@ -48,7 +48,7 @@
  <details><summary>
 </summary>
 
-![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/sp2.png)   
+![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/img/api2.png)   
 
 </details>
 
@@ -57,7 +57,7 @@
  <details><summary>
 </summary>
 
-![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/sp3.png)   
+![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/img/api3.png)   
 
 </details>
 
