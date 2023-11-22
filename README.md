@@ -22,10 +22,12 @@
 예를 들어
 ![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/img/api1.png)   
 위 사진의 코드를 참고하여 토큰을 발급받아
-![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/img/api2.png)   
-위 사진처럼 데이터를 받아올 수 있으며,
 ![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/img/api3.png)   
-이러한 코드를 톹해 노래 추천 서비스를 제공받을 수 있다.
+위 사진처럼 데이터를 받아올 수 있으며,
+![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/img/api4.png)   
+이와 같이 여러 데이터를 입력받아
+![onealog](https://github.com/jangchangjun/ai_api_project/blob/main/img/api4_1.png) 
+이러한 추천 음악 데이터를 받아올 수 있다
 
 ### 2.2 API의 입력과 출력 
 사용자 노래 추천의 기반이 되는 가수, 장르, 트랙 등의 값 뿐만 아니라 BPM, energy, popularity 등의 세세한 값 또한 입력되어 플레이리스트를 생성해낸다.
