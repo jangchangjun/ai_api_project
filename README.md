@@ -23,10 +23,15 @@
 
 ### 2-2 API의 입력과 출력
 spotify api에서 토큰을 발급받아 아래의 예시처럼 여러 데이터 값을 받을 수 있으며<br>
+
 ![onealog](img/api3.png)<br>
+
 여러 입력값을 토대로<br>
+
 ![onealog](img/api4.png)<br>
+
 노래 추천 데이터 또한 받아올 수 있다.<br>
+
 ![onealog](img/api4_1.png)<br>
 
 ## 3. 웹페이지 구성
