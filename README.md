@@ -43,7 +43,7 @@ spotify api에서 토큰을 발급받아 아래의 예시처럼 여러 데이터
 </summary>
 
   
-![onealog](img/api1.png)   
+![onealog](img/sp1.png) 
 
 </details>
 
@@ -52,7 +52,7 @@ spotify api에서 토큰을 발급받아 아래의 예시처럼 여러 데이터
  <details><summary>
 </summary>
 
-![onealog](img/api2.png)   
+![onealog](img/sp2.png)   
 
 </details>
 
@@ -61,7 +61,7 @@ spotify api에서 토큰을 발급받아 아래의 예시처럼 여러 데이터
  <details><summary>
 </summary>
 
-![onealog](img/api3.png)   
+![onealog](img/sp3.png)   
 
 </details>
 
