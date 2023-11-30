@@ -18,7 +18,7 @@
 ### 2-1 Music Explorer 서비스에서 사용할 API
 
 #### Spotify API
--Spotify Api는 Spotify사 에서 릴리즈한 api로  access Token을 발급하여 노래 데이터 분석, 사용자 데이터 분석 뿐만 아니라 여러 데이터를 조합해 플레이리스트를 생성하는 등 여러 작업을 수행 할 수 있다.
+- Spotify Api는 Spotify사 에서 릴리즈한 api로  access Token을 발급하여 노래 데이터 분석, 사용자 데이터 분석 뿐만 아니라 여러 데이터를 조합해 플레이리스트를 생성하는 등 여러 작업을 수행 할 수 있다.
 
 
 ### 2-2 API의 입력과 출력
