@@ -171,7 +171,7 @@
             <form action="#">
                <div class="page slide-page">
                   <div class="title">
-                     Basic Info:
+                     Track and Artist
                   </div>
                   <div class="field">
                      <div class="label">
@@ -253,12 +253,12 @@
         });
     </script>
                   <div class="field">
-                     <button class="firstNext next">Next</button>
+                     <button class="firstNext_next">Next</button>
                   </div>
                </div>
                <div class="page">
                   <div class="title">
-                    details
+                    Details
                   </div>
                   <h3>bpm값 입력</h3>
                   <div class="bpm">
@@ -276,13 +276,14 @@
                     </div>
                 </div>
                 
+                
                 <div class="field btns">
-                    <button class="prev-1 prev">Previous</button>
-                    <button class="next-1 next" onclick="saveAndNext()">Next</button>
+                    <button class="prev-1_prev">Previous</button>
+                    <button class="next-1_next" onclick="validateAndNext()">Next</button>
                 </div>
                 
                 <script>
-                    function saveAndNext() {
+                    function validateAndNext() {
                         // BPM 값 저장 및 체크
                         var bpmMinInput = document.getElementById('bpmmin');
                         var bpmMaxInput = document.getElementById('bpmmax');
@@ -310,38 +311,74 @@
                         alert('에너지값이 적용되었습니다! \n최소치: ' + energyMinValue + '\n최대치: ' + energyMaxValue);
                 
                         // 여기에 다음 단계로 이동하는 로직 추가
-                        moveNextPage();
+                        alert('다음 단계로 이동');
                     }
-                
-                    function moveNextPage() {
-                        // 여기에 실제 다음 페이지로 이동하는 로직 추가
-                        
-                    }
-                </script>                
+                </script>
+                       
                     </div>             
                <div class="page">
                   <div class="title">
-                     Date of Birth:
+                    Genre
                   </div>
-                  <div class="field">
-                     <div class="label">
-                        Date
-                     </div>
-                     <input type="text">
-                  </div>
-                  <div class="field">
-                     <div class="label">
-                        Gender
-                     </div>
-                     <select>
-                        <option>Male</option>
-                        <option>Female</option>
-                        <option>Other</option>
-                     </select>
-                  </div>
+                  <style>
+                    .checkbox-group {
+                        display: flex;
+                        flex-wrap: wrap;
+                    }
+                
+                    .checkbox-group label {
+                        flex-basis: 30%; /* 3개씩 나란히 표시하려면 100% / 3 = 33.33% */
+                    }
+                </style>
+                
+                <div class="field" id="genreField" class="checkbox-group">
+                   
+                </div>
+                
+                <script>
+                    // JavaScript 코드
+                    document.addEventListener('DOMContentLoaded', function () {
+                        var genres = ['k-pop', 'pop', 'j-pop', 'acoustic', 'indie', 'dance'];
+                        var genreField = document.getElementById('genreField');
+                
+                        // 각 장르에 대한 체크박스 생성
+                        genres.forEach(function (genre) {
+                            var checkbox = document.createElement('input');
+                            checkbox.type = 'checkbox';
+                            checkbox.name = 'genres'; // 같은 그룹으로 묶기 위해 같은 이름 사용
+                            checkbox.value = genre;
+                            checkbox.id = genre + 'Checkbox';
+                
+                            var label = document.createElement('label');
+                            label.htmlFor = genre + 'Checkbox';
+                            label.appendChild(document.createTextNode(genre));
+                
+                            var checkboxWrapper = document.createElement('div');
+                            checkboxWrapper.appendChild(checkbox);
+                            checkboxWrapper.appendChild(label);
+                            genreField.appendChild(checkboxWrapper);
+                        });
+                
+                        // 체크박스 변경 감지
+                        genreField.addEventListener('change', function () {
+                            var checkedGenres = Array.from(genreField.querySelectorAll('input[type="checkbox"]:checked'))
+                                .map(function (checkbox) {
+                                    return checkbox.value;
+                                });
+                
+                            // 선택된 장르들을 보여주기
+                            displaySelectedGenres(checkedGenres);
+                        });
+                
+                        // 선택된 장르들을 보여주는 함수
+                        
+                    });
+                </script>
+                
+                
                   <div class="field btns">
-                     <button class="prev-2 prev">Previous</button>
-                     <button class="next-2 next">Next</button>
+                     <button class="prev-2_prev">Previous</button>
+                     <button class="next-2_next">Next</button>
                   </div>
                </div>
                <div class="page">
@@ -361,7 +398,7 @@
                      <input type="password">
                   </div>
                   <div class="field btns">
-                     <button class="prev-3 prev">Previous</button>
+                     <button class="prev-3_prev">Previous</button>
                      <button class="submit">Submit</button>
                   </div>
                </div>
