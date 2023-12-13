@@ -1,122 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        .searchContainer {
-            display: flex;
-            gap: 10px;
-        }
-
-        .searchInput {
-            width: 200px;
-            padding: 5px;
-        }
-
-        .searchButton {
-            padding: 5px;
-            cursor: pointer;
-        }
-
-        .searchResults {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .searchResults li {
-            cursor: pointer;
-            padding: 5px;
-            border: 1px solid #ddd;
-            margin-bottom: -1px;
-            background-color: #f6f6f6;
-        }
-    </style>
-    <title>Spotify Search Example</title>
-</head>
-<body>
-
-    <div class="searchContainer">
-        <input type="text" id="trackSearchInput" class="searchInput" placeholder="Search for tracks...">
-        <button id="trackSearchButton" class="searchButton">Search Tracks</button>
-    </div>
-    <ul id="trackResults" class="searchResults"></ul>
-
-    <div class="searchContainer">
-        <input type="text" id="artistSearchInput" class="searchInput" placeholder="Search for artists...">
-        <button id="artistSearchButton" class="searchButton">Search Artists</button>
-    </div>
-    <ul id="artistResults" class="searchResults"></ul>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            function searchSpotify(query, type) {
-                return fetch(`https://api.spotify.com/v1/search?q=${query}&type=${type}`, {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': 'Bearer BQCfWHDjBedHz9CtOKZaWNsPHmYZ7iX_fOJ6zFxhGEvQWJWPVVS-tFhQSaKUGypf-u8H5HhqiYyY3Elqw_n6xYMD1FUwMUY14TpcbIHU3XqjGmktdB4', // Replace with a valid access token
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json',
-                    },
-                })
-                .then(response => response.json())
-                .then(data => data[type + 's'].items)
-                .catch(error => {
-                    console.error(`Error fetching Spotify ${type} data:`, error);
-                    return [];
-                });
-            }
-
-            function updateResults(query, type, resultsContainer) {
-                // Clear previous results
-                resultsContainer.innerHTML = '';
-
-                // Perform Spotify search
-                searchSpotify(query, type)
-                    .then(results => {
-                        // Populate the results list
-                        results.forEach(result => {
-                            const listItem = document.createElement('li');
-                            listItem.textContent = result.name;
-
-                            // Add a click event listener to handle result selection
-                            listItem.addEventListener('click', function () {
-                                // Save the selected result (you can modify this part to save it wherever you need)
-                                localStorage.setItem('selectedResult', result.name);
-                                // Hide the results
-                                resultsContainer.innerHTML = '';
-                            });
-
-                            resultsContainer.appendChild(listItem);
-                        });
-                    });
-            }
-
-            // Track search
-            const trackSearchInput = document.getElementById('trackSearchInput');
-            const trackSearchButton = document.getElementById('trackSearchButton');
-            const trackResults = document.getElementById('trackResults');
-
-            trackSearchButton.addEventListener('click', function () {
-                const query = trackSearchInput.value;
-                updateResults(query, 'track', trackResults);
-            });
-
-            // Artist search
-            const artistSearchInput = document.getElementById('artistSearchInput');
-            const artistSearchButton = document.getElementById('artistSearchButton');
-            const artistResults = document.getElementById('artistResults');
-
-            artistSearchButton.addEventListener('click', function () {
-                const query = artistSearchInput.value;
-                updateResults(query, 'artist', artistResults);
-            });
-        });
-    </script>
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <!-- Created By CodingNepal -->
 <html lang="en" dir="ltr">
@@ -477,15 +358,11 @@
                                 localStorage.setItem(key, document.getElementById(key).value);
                             }
                         });
-                    </script>
-            
-                    
-                     
+                    </script> 
                   </div>
                   <div class="field btns">
                      <button class="prev-3 prev">Previous</button>
                      <button class="submit">Submit</button>
-                  
                     </div>
                   </div>
                </div>
