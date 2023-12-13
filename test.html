@@ -193,7 +193,7 @@
                 return fetch(`https://api.spotify.com/v1/search?q=${query}&type=${type}`, {
                     method: 'GET',
                     headers: {
-                        'Authorization': 'Bearer BQBgWEGEfXs0FZAE7iOqu1JcDOSHTjWj4QKoywzAeBK92UVeuye2J3fZ5mWtiNrzXWB0pDHwzkE4FB-vzel_7pdxlWptHdF3yGNRE2nHuJ0TtyYQrmY', // Replace with a valid access token
+                        'Authorization': 'Bearer BQB9fGwoDNEFpPAl8u-yqq8oQf2kYnJh1_UHQKaQvr5zZ7wri3f1xwMe3IA4_pQRdO2y3pUsdvXooKyrsQYF25IOQb-41z69yd4ENjCIsTQQzSnXblw"', // Replace with a valid access token
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
                     },
@@ -260,14 +260,13 @@
                   <div class="title">
                     Details
                   </div>
-                  <h3>bpm값 입력</h3>
+                  <h3>bpm값 입력(30~300)</h3>
                   <div class="bpm">
                     <div>
                         <input class="bpmnum" id="bpmmin" type="text" placeholder="bpm 최소치 입력">
                         <input class="bpmnum" id="bpmmax" type="text" placeholder="bpm 최대치 입력">
                     </div>
-                </div>
-                
+               
                 <h3>에너지 값 입력(0~1)</h3>
                 <div class="energy">
                     <div>
@@ -278,10 +277,10 @@
                 
                 
                 <div class="field btns">
-                    <button class="prev-1_prev">Previous</button>
-                    <button class="next-1_next" onclick="validateAndNext()">Next</button>
+                    <button class="prev-1 prev">Previous</button>
+                    <button class="next-1 next" onclick="validateAndNext()">Next</button>
                 </div>
-                
+            </div>
                 <script>
                     function validateAndNext() {
                         // BPM 값 저장 및 체크
@@ -294,8 +293,13 @@
                             alert('BPM값을 다시 입력해주세요. 30~300값을 입력해야합니다');
                             return;
                         }
-                
+
+                        localStorage.setItem('bpmMin', bpmMinValue);
+                        localStorage.setItem('bpmMax', bpmMaxValue);
+
                         alert('BPM값이 적용되었습니다! \n최소치: ' + bpmMinValue + '\n최대치: ' + bpmMaxValue);
+
+                        
                 
                         // Energy 값 저장 및 체크
                         var energyMinInput = document.getElementById('energymin');
@@ -307,13 +311,22 @@
                             alert('에너지값을 다시 입력해주세요. 0~1값을 입력해야합니다.');
                             return;
                         }
+                        localStorage.setItem('energyMin', energyMinValue);
+                        localStorage.setItem('energyMax', energyMaxValue);
                 
                         alert('에너지값이 적용되었습니다! \n최소치: ' + energyMinValue + '\n최대치: ' + energyMaxValue);
-                
-                        // 여기에 다음 단계로 이동하는 로직 추가
-                        alert('다음 단계로 이동');
+                        
+                        
                     }
                 </script>
+                
+<!--                 
+                <div class="field btns">
+                    <button class="prev-1 prev">Previous</button>
+                    <button class="next-1 next" >Next</button>
+                </div> -->
+                
+                
                        
                     </div>             
                <div class="page">
@@ -327,7 +340,7 @@
                     }
                 
                     .checkbox-group label {
-                        flex-basis: 30%; /* 3개씩 나란히 표시하려면 100% / 3 = 33.33% */
+                        flex-basis: 20%; /* 3개씩 나란히 표시하려면 100% / 3 = 33.33% */
                     }
                 </style>
                 
@@ -336,16 +349,15 @@
                 </div>
                 
                 <script>
-                    // JavaScript 코드
+                   
                     document.addEventListener('DOMContentLoaded', function () {
                         var genres = ['k-pop', 'pop', 'j-pop', 'acoustic', 'indie', 'dance'];
                         var genreField = document.getElementById('genreField');
                 
-                        // 각 장르에 대한 체크박스 생성
                         genres.forEach(function (genre) {
                             var checkbox = document.createElement('input');
                             checkbox.type = 'checkbox';
-                            checkbox.name = 'genres'; // 같은 그룹으로 묶기 위해 같은 이름 사용
+                            checkbox.name = 'genres'; 
                             checkbox.value = genre;
                             checkbox.id = genre + 'Checkbox';
                 
@@ -359,47 +371,93 @@
                             genreField.appendChild(checkboxWrapper);
                         });
                 
-                        // 체크박스 변경 감지
+                      
                         genreField.addEventListener('change', function () {
                             var checkedGenres = Array.from(genreField.querySelectorAll('input[type="checkbox"]:checked'))
                                 .map(function (checkbox) {
                                     return checkbox.value;
                                 });
                 
-                            // 선택된 장르들을 보여주기
+                           
                             displaySelectedGenres(checkedGenres);
                         });
-                
-                        // 선택된 장르들을 보여주는 함수
                         
                     });
+                    function displaySelectedGenres(checkedGenres) {
+                        const displayedGenres = document.getElementById('displayedGenres');
+                        displayedGenres.textContent = checkedGenres.join(', ');
+                
+                        
+                        localStorage.setItem('checkedGenres', JSON.stringify(checkedGenres));
+                    }
                 </script>
                 
                 
                   <div class="field btns">
-                     <button class="prev-2_prev">Previous</button>
-                     <button class="next-2_next">Next</button>
+                     <button class="prev-2 prev">Previous</button>
+                     <button class="next-2 next">Next</button>
                   </div>
                </div>
+            
                <div class="page">
                   <div class="title">
-                     Login Details:
+                    playlist
                   </div>
                   <div class="field">
-                     <div class="label">
-                        Username
-                     </div>
-                     <input type="text">
-                  </div>
-                  <div class="field">
-                     <div class="label">
-                        Password
-                     </div>
-                     <input type="password">
+                    <p>BPM min: <span id="displayedBpmMin"></span></p>
+                    <p>BPM max: <span id="displayedBpmMax"></span></p>
+                    <p>Energy min: <span id="displayedEnergyMin"></span></p>
+                    <p>Energy max: <span id="displayedEnergyMax"></span></p>
+                    <p>Genre: <span id="displayedGenres"></span></p>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        displayPlaylist();
+                    });
+
+                    
+                    function displayPlaylist() {
+                      
+                        const displayedBpmMin = document.getElementById('displayedBpmMin');
+                        const displayedBpmMax = document.getElementById('displayedBpmMax');
+                        const displayedEnergyMin = document.getElementById('displayedEnergyMin');
+                        const displayedEnergyMax = document.getElementById('displayedEnergyMax');
+                        const displayedGenres = document.getElementById('displayedGenres');
+
+                       
+                        const bpmMin = localStorage.getItem('bpmMin');
+                        const bpmMax = localStorage.getItem('bpmMax');
+                        const energyMin = localStorage.getItem('energyMin');
+                        const energyMax = localStorage.getItem('energyMax');
+                        const checkedGenres = JSON.parse(localStorage.getItem('checkedGenres')) || [];
+
+                        
+                        displayedBpmMin.textContent = bpmMin ? bpmMin : 'Not set';
+                        displayedBpmMax.textContent = bpmMax ? bpmMax : 'Not set';
+                        displayedEnergyMin.textContent = energyMin ? energyMin : 'Not set';
+                        displayedEnergyMax.textContent = energyMax ? energyMax : 'Not set';
+                        displayedGenres.textContent = checkedGenres.length > 0 ? checkedGenres.join(', ') : 'Not set';
+                    }
+                    document.addEventListener('DOMContentLoaded', function () {
+                        
+                        displayPlaylist();
+                
+                       
+                        const submitButton = document.querySelector('.submit');
+                        submitButton.addEventListener('click', function () {
+                            
+                            window.location.href = 'playlist.html';
+                        });
+                    });
+                    </script>
+                    
+                     
                   </div>
                   <div class="field btns">
-                     <button class="prev-3_prev">Previous</button>
+                     <button class="prev-3 prev">Previous</button>
                      <button class="submit">Submit</button>
+                     
+                    
                   </div>
                </div>
             </form>

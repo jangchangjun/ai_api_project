@@ -1,5 +1,5 @@
 const slidePage = document.querySelector(".slide-page");
-const nextBtnFirst = document.querySelector(".firstNext");
+const nextBtnFirst = document.querySelector(".firstNext_next");
 const prevBtnSec = document.querySelector(".prev-1");
 const nextBtnSec = document.querySelector(".next-1");
 const prevBtnThird = document.querySelector(".prev-2");
@@ -41,10 +41,11 @@ submitBtn.addEventListener("click", function(){
   progressText[current - 1].classList.add("active");
   current += 1;
   setTimeout(function(){
-    alert("Your Form Successfully Signed up");
-    location.reload();
-  },800);
+    alert("플레이리스트를 생성합니다");
+    location.href = "playlist.html"; 
+  }, 800);
 });
+
 
 prevBtnSec.addEventListener("click", function(event){
   event.preventDefault();
