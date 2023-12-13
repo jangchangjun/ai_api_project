@@ -96,6 +96,7 @@ form .page .btns button{
 form .page .btns button.prev{
   margin-right: 3px;
   font-size: 17px;
+  background-color: lightgray;
 }
 form .page .btns button.next{
   margin-left: 3px;

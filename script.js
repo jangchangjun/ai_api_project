@@ -45,8 +45,6 @@ submitBtn.addEventListener("click", function(){
     location.href = "playlist.html"; 
   }, 800);
 });
-
-
 prevBtnSec.addEventListener("click", function(event){
   event.preventDefault();
   slidePage.style.marginLeft = "0%";

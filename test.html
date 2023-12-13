@@ -294,8 +294,8 @@
                             return;
                         }
 
-                        localStorage.setItem('bpmMin', bpmMinValue);
-                        localStorage.setItem('bpmMax', bpmMaxValue);
+                        localStorage.setItem('bpmmin', bpmMinValue);
+                        localStorage.setItem('bpmmax', bpmMaxValue);
 
                         alert('BPM값이 적용되었습니다! \n최소치: ' + bpmMinValue + '\n최대치: ' + bpmMaxValue);
 
@@ -311,8 +311,8 @@
                             alert('에너지값을 다시 입력해주세요. 0~1값을 입력해야합니다.');
                             return;
                         }
-                        localStorage.setItem('energyMin', energyMinValue);
-                        localStorage.setItem('energyMax', energyMaxValue);
+                        localStorage.setItem('energymin', energyMinValue);
+                        localStorage.setItem('energymax', energyMaxValue);
                 
                         alert('에너지값이 적용되었습니다! \n최소치: ' + energyMinValue + '\n최대치: ' + energyMaxValue);
                         
@@ -337,10 +337,12 @@
                     .checkbox-group {
                         display: flex;
                         flex-wrap: wrap;
+                        margin-bottom: 10px;
                     }
                 
                     .checkbox-group label {
-                        flex-basis: 20%; /* 3개씩 나란히 표시하려면 100% / 3 = 33.33% */
+                        flex-basis: 20%;
+                        margin-bottom: 10px; /* 3개씩 나란히 표시하려면 100% / 3 = 33.33% */
                     }
                 </style>
                 
@@ -410,54 +412,81 @@
                     <p>Energy max: <span id="displayedEnergyMax"></span></p>
                     <p>Genre: <span id="displayedGenres"></span></p>
 
-                <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        displayPlaylist();
-                    });
-
+               
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            // Always clear localStorage values on page load
+                            localStorage.removeItem('bpmmin');
+                            localStorage.removeItem('bpmmax');
+                            localStorage.removeItem('energymin');
+                            localStorage.removeItem('energymax');
+                            localStorage.removeItem('checkedGenres');
                     
-                    function displayPlaylist() {
-                      
-                        const displayedBpmMin = document.getElementById('displayedBpmMin');
-                        const displayedBpmMax = document.getElementById('displayedBpmMax');
-                        const displayedEnergyMin = document.getElementById('displayedEnergyMin');
-                        const displayedEnergyMax = document.getElementById('displayedEnergyMax');
-                        const displayedGenres = document.getElementById('displayedGenres');
-
-                       
-                        const bpmMin = localStorage.getItem('bpmMin');
-                        const bpmMax = localStorage.getItem('bpmMax');
-                        const energyMin = localStorage.getItem('energyMin');
-                        const energyMax = localStorage.getItem('energyMax');
-                        const checkedGenres = JSON.parse(localStorage.getItem('checkedGenres')) || [];
-
+                            // Load and display values
+                            document.getElementById('bpmmin').value = localStorage.getItem('bpmmin') || '';
+                            document.getElementById('bpmmax').value = localStorage.getItem('bpmmax') || '';
+                            document.getElementById('energymin').value = localStorage.getItem('energymin') || '';
+                            document.getElementById('energymax').value = localStorage.getItem('energymax') || '';
+                            const checkedGenres = JSON.parse(localStorage.getItem('checkedGenres')) || [];
+                            checkedGenres.forEach(genre => {
+                                document.getElementById(genre + 'Checkbox').checked = true;
+                            });
+                    
+                            displayPlaylist();
+                    
+                            function displayPlaylist() {
+                                const displayedBpmMin = document.getElementById('displayedBpmMin');
+                                const displayedBpmMax = document.getElementById('displayedBpmMax');
+                                const displayedEnergyMin = document.getElementById('displayedEnergyMin');
+                                const displayedEnergyMax = document.getElementById('displayedEnergyMax');
+                                const displayedGenres = document.getElementById('displayedGenres');
+                    
+                                const bpmMin = localStorage.getItem('bpmmin');
+                                const bpmMax = localStorage.getItem('bpmmax');
+                                const energyMin = localStorage.getItem('energymin');
+                                const energyMax = localStorage.getItem('energymax');
+                                const checkedGenres = JSON.parse(localStorage.getItem('checkedGenres')) || [];
+                    
+                                displayedBpmMin.textContent = bpmMin ? bpmMin : 'Not set';
+                                displayedBpmMax.textContent = bpmMax ? bpmMax : 'Not set';
+                                displayedEnergyMin.textContent = energyMin ? energyMin : 'Not set';
+                                displayedEnergyMax.textContent = energyMax ? energyMax : 'Not set';
+                                displayedGenres.textContent = checkedGenres.length > 0 ? checkedGenres.join(', ') : 'Not set';
+                            }
+                    
+                            // Add event listeners for input elements
+                            document.getElementById('bpmmin').addEventListener('input', function () {
+                                updateLocalStorage('bpmmin');
+                                displayPlaylist();
+                            });
+                            document.getElementById('bpmmax').addEventListener('input', function () {
+                                updateLocalStorage('bpmmax');
+                                displayPlaylist();
+                            });
+                            document.getElementById('energymin').addEventListener('input', function () {
+                                updateLocalStorage('energymin');
+                                displayPlaylist();
+                            });
+                            document.getElementById('energymax').addEventListener('input', function () {
+                                updateLocalStorage('energymax');
+                                displayPlaylist();
+                            });
                         
-                        displayedBpmMin.textContent = bpmMin ? bpmMin : 'Not set';
-                        displayedBpmMax.textContent = bpmMax ? bpmMax : 'Not set';
-                        displayedEnergyMin.textContent = energyMin ? energyMin : 'Not set';
-                        displayedEnergyMax.textContent = energyMax ? energyMax : 'Not set';
-                        displayedGenres.textContent = checkedGenres.length > 0 ? checkedGenres.join(', ') : 'Not set';
-                    }
-                    document.addEventListener('DOMContentLoaded', function () {
-                        
-                        displayPlaylist();
-                
-                       
-                        const submitButton = document.querySelector('.submit');
-                        submitButton.addEventListener('click', function () {
-                            
-                            window.location.href = 'playlist.html';
+                            function updateLocalStorage(key) {
+                                // Update localStorage with the current input values
+                                localStorage.setItem(key, document.getElementById(key).value);
+                            }
                         });
-                    });
                     </script>
+            
                     
                      
                   </div>
                   <div class="field btns">
                      <button class="prev-3 prev">Previous</button>
                      <button class="submit">Submit</button>
-                     
-                    
+                  
+                    </div>
                   </div>
                </div>
             </form>
