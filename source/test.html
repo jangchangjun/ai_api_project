@@ -1,9 +1,11 @@
+<!-- test.html -->
+
 <!DOCTYPE html>
 <!-- Created By CodingNepal -->
 <html lang="en" dir="ltr">
    <head>
       <meta charset="utf-8">
-      <title>Multi Step Form | CodingNepal</title>
+      <title>Spotify 노래 추천</title>
       <link rel="stylesheet" href="test.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
    </head>
@@ -74,7 +76,7 @@
                 return fetch(`https://api.spotify.com/v1/search?q=${query}&type=${type}`, {
                     method: 'GET',
                     headers: {
-                        'Authorization': 'Bearer BQB9fGwoDNEFpPAl8u-yqq8oQf2kYnJh1_UHQKaQvr5zZ7wri3f1xwMe3IA4_pQRdO2y3pUsdvXooKyrsQYF25IOQb-41z69yd4ENjCIsTQQzSnXblw"', // Replace with a valid access token
+                        'Authorization': 'Bearer BQBJZaIMg1hOIbG0aWRDqpBxoZrFEESngNzG3DA45bS5mnNRzHYSPz1q-oVRxoK3TI1p2EUTJEzTBrUJfeMLZ54ev-_eQCdOXAZSj2KTYXOL3tT18Rs', // Replace with a valid access token
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
                     },
@@ -88,6 +90,39 @@
             }
 
             function updateResults(query, type, resultsContainer) {
+                // Clear previous results
+                resultsContainer.innerHTML = '';
+
+                // Perform Spotify search
+                searchSpotify(query, type)
+                    .then(results => {
+                    // Populate the results list
+                    results.forEach(result => {
+                        const listItem = document.createElement('li');
+
+                        // Combine track name and artist name
+                        const trackArtistText = `${result.name} - ${result.artists[0].name}`;
+                        listItem.textContent = trackArtistText;
+
+                        // Add a click event listener to handle result selection (you can modify this part to save it wherever you need)
+                        listItem.addEventListener('click', function () {
+                            localStorage.setItem('selectedResult', trackArtistText);
+                            document.getElementById(type + 'SearchInput').value = trackArtistText;
+                            resultsContainer.innerHTML = '';
+                        });
+
+                            resultsContainer.appendChild(listItem);
+                        });
+                        
+                    })
+                    .catch(error => {
+                    console.error(`Error fetching Spotify ${type} data:`, error);
+                    resultsContainer.innerHTML = '';
+                    });
+                    
+            }
+
+            function artiResults(query, type, resultsContainer) {
                 // Clear previous results
                 resultsContainer.innerHTML = '';
 
@@ -109,6 +144,8 @@
                                 resultsContainer.innerHTML = '';
                             });
 
+
+
                             resultsContainer.appendChild(listItem);
                         });
                     });
@@ -129,10 +166,34 @@
 
             artistSearchInput.addEventListener('input', function () {
                 const query = artistSearchInput.value;
-                updateResults(query, 'artist', artistResults);
+                artiResults(query, 'artist', artistResults);
             });
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+           // Track 검색 input 엘리먼트 가져오기
+           const trackSearchInput = document.getElementById('trackResults');
+        
+           // Track 검색 input 엘리먼트의 값 가져오기
+           const trackSearchValue = trackSearchInput.value;
+        
+           // 가져온 값 출력 (예시로 콘솔에 출력)
+           console.log('Track 검색 값:', trackSearchValue);
+        });
+     </script>
+     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+           // artist 검색 input 엘리먼트 가져오기
+           const artistSearchInput = document.getElementById('artistResults');
+        
+           // artist 검색 input 엘리먼트의 값 가져오기
+           const artistSearchValue = artistSearchInput.value;
+        
+           // 가져온 값 출력 (예시로 콘솔에 출력)
+           console.log('artist 검색 값:', artistSearchValue);
+        });
+     </script>
                   <div class="field">
                      <button class="firstNext_next">Next</button>
                   </div>
@@ -147,14 +208,6 @@
                         <input class="bpmnum" id="bpmmin" type="text" placeholder="bpm 최소치 입력">
                         <input class="bpmnum" id="bpmmax" type="text" placeholder="bpm 최대치 입력">
                     </div>
-               
-                <h3>에너지 값 입력(0~1)</h3>
-                <div class="energy">
-                    <div>
-                        <input class="energynum" id="energymin" type="text" placeholder="에너지 최소치 입력 ex) 0.11">
-                        <input class="energynum" id="energymax" type="text" placeholder="에너지 최대치 입력 ex) 0.89">
-                    </div>
-                </div>
                 
                 
                 <div class="field btns">
@@ -170,34 +223,9 @@
                         var bpmMinValue = parseInt(bpmMinInput.value);
                         var bpmMaxValue = parseInt(bpmMaxInput.value);
                 
-                        if (isNaN(bpmMinValue) || isNaN(bpmMaxValue) || bpmMinValue < 30 || bpmMaxValue > 300 || bpmMinValue > bpmMaxValue) {
-                            alert('BPM값을 다시 입력해주세요. 30~300값을 입력해야합니다');
-                            return;
-                        }
 
                         localStorage.setItem('bpmmin', bpmMinValue);
-                        localStorage.setItem('bpmmax', bpmMaxValue);
-
-                        alert('BPM값이 적용되었습니다! \n최소치: ' + bpmMinValue + '\n최대치: ' + bpmMaxValue);
-
-                        
-                
-                        // Energy 값 저장 및 체크
-                        var energyMinInput = document.getElementById('energymin');
-                        var energyMaxInput = document.getElementById('energymax');
-                        var energyMinValue = parseFloat(energyMinInput.value).toFixed(2);
-                        var energyMaxValue = parseFloat(energyMaxInput.value).toFixed(2);
-                
-                        if (isNaN(energyMinValue) || isNaN(energyMaxValue) || energyMinValue < 0 || energyMaxValue > 1 || energyMinValue > energyMaxValue) {
-                            alert('에너지값을 다시 입력해주세요. 0~1값을 입력해야합니다.');
-                            return;
-                        }
-                        localStorage.setItem('energymin', energyMinValue);
-                        localStorage.setItem('energymax', energyMaxValue);
-                
-                        alert('에너지값이 적용되었습니다! \n최소치: ' + energyMinValue + '\n최대치: ' + energyMaxValue);
-                        
-                        
+                        localStorage.setItem('bpmmax', bpmMaxValue);  
                     }
                 </script>
                 
@@ -289,8 +317,6 @@
                   <div class="field">
                     <p>BPM min: <span id="displayedBpmMin"></span></p>
                     <p>BPM max: <span id="displayedBpmMax"></span></p>
-                    <p>Energy min: <span id="displayedEnergyMin"></span></p>
-                    <p>Energy max: <span id="displayedEnergyMax"></span></p>
                     <p>Genre: <span id="displayedGenres"></span></p>
 
                
@@ -299,15 +325,11 @@
                             // Always clear localStorage values on page load
                             localStorage.removeItem('bpmmin');
                             localStorage.removeItem('bpmmax');
-                            localStorage.removeItem('energymin');
-                            localStorage.removeItem('energymax');
                             localStorage.removeItem('checkedGenres');
                     
                             // Load and display values
                             document.getElementById('bpmmin').value = localStorage.getItem('bpmmin') || '';
                             document.getElementById('bpmmax').value = localStorage.getItem('bpmmax') || '';
-                            document.getElementById('energymin').value = localStorage.getItem('energymin') || '';
-                            document.getElementById('energymax').value = localStorage.getItem('energymax') || '';
                             const checkedGenres = JSON.parse(localStorage.getItem('checkedGenres')) || [];
                             checkedGenres.forEach(genre => {
                                 document.getElementById(genre + 'Checkbox').checked = true;
@@ -316,22 +338,20 @@
                             displayPlaylist();
                     
                             function displayPlaylist() {
+                                
                                 const displayedBpmMin = document.getElementById('displayedBpmMin');
                                 const displayedBpmMax = document.getElementById('displayedBpmMax');
-                                const displayedEnergyMin = document.getElementById('displayedEnergyMin');
-                                const displayedEnergyMax = document.getElementById('displayedEnergyMax');
+
                                 const displayedGenres = document.getElementById('displayedGenres');
                     
                                 const bpmMin = localStorage.getItem('bpmmin');
                                 const bpmMax = localStorage.getItem('bpmmax');
-                                const energyMin = localStorage.getItem('energymin');
-                                const energyMax = localStorage.getItem('energymax');
+
                                 const checkedGenres = JSON.parse(localStorage.getItem('checkedGenres')) || [];
                     
                                 displayedBpmMin.textContent = bpmMin ? bpmMin : 'Not set';
                                 displayedBpmMax.textContent = bpmMax ? bpmMax : 'Not set';
-                                displayedEnergyMin.textContent = energyMin ? energyMin : 'Not set';
-                                displayedEnergyMax.textContent = energyMax ? energyMax : 'Not set';
+
                                 displayedGenres.textContent = checkedGenres.length > 0 ? checkedGenres.join(', ') : 'Not set';
                             }
                     
@@ -344,14 +364,6 @@
                                 updateLocalStorage('bpmmax');
                                 displayPlaylist();
                             });
-                            document.getElementById('energymin').addEventListener('input', function () {
-                                updateLocalStorage('energymin');
-                                displayPlaylist();
-                            });
-                            document.getElementById('energymax').addEventListener('input', function () {
-                                updateLocalStorage('energymax');
-                                displayPlaylist();
-                            });
                         
                             function updateLocalStorage(key) {
                                 // Update localStorage with the current input values
@@ -362,7 +374,7 @@
                   </div>
                   <div class="field btns">
                      <button class="prev-3 prev">Previous</button>
-                     <button class="submit">Submit</button>
+                     <button class="submit" href="playlist.html">Submit</button>
                     </div>
                   </div>
                </div>
