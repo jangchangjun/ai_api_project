@@ -38,34 +38,50 @@ spotify api에서 토큰을 발급받아 아래의 예시처럼 여러 데이터
 ## 3. 웹페이지 구성
 ### 3-1 출력문
 
- #### 기본 화면
+ #### 가수,트랙 입력창
  
  <details><summary>
 </summary>
 
   
-![onealog](img/sp1.png) 
+![onealog](img/1.png) 
 
 </details>
 
-#### 플레이리스트 생성 화면
+#### BPM,ENERGY값 입력
 
  <details><summary>
 </summary>
 
-![onealog](img/sp2.png)   
+![onealog](img/2.png)   
 
 </details>
 
-#### 사진기반 추천 플레이리스트
+#### GENRE값 입력
 
  <details><summary>
 </summary>
 
-![onealog](img/sp3.png)   
+![onealog](img/3.png)   
 
 </details>
 
+#### 플레이리스트 생성 값 입력
+
+ <details><summary>
+</summary>
+
+![onealog](img/4.png)   
+
+</details>
+
+#### 플레이리스트 화면
+ <details><summary>
+</summary>
+
+![onealog](img/5.png)   
+
+</details>
 
 
 
