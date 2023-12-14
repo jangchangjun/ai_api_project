@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spotify 플레이리스트</title>
+</head>
+<body>
+    <script src="playlist.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
+    <script>
+    async function getArtistId(artistName, accessToken) {
+    const url = `https://api.spotify.com/v1/search?q=${artistName}&type=artist`;
+    const headers = {
+        'Authorization': `Bearer ${accessToken}`,
+    };
+
+    try {
+        const response = await fetch(url, { headers });
+        const data = await response.json();
+
+        // 검색 결과 확인
+        if ('artists' in data && 'items' in data.artists) {
+        // 첫 번째 아티스트의 ID를 반환
+        if (data.artists.items.length > 0) {
+            return data.artists.items[0].id;
+        }
+        }
+
+        return null;  // 아티스트를 찾지 못한 경우 null을 반환
+    } catch (error) {
+        console.error('Error fetching artist data:', error);
+        return null;
+    }
+    }
+
+
+    async function getTrackId(trackName, accessToken) {
+    const url = `https://api.spotify.com/v1/search?q=${trackName}&type=track`;
+    const headers = {
+        'Authorization': `Bearer ${accessToken}`,
+    };
+
+    try {
+        const response = await fetch(url, { headers });
+        const data = await response.json();
+
+        // 검색 결과 확인
+        if ('tracks' in data && 'items' in data.tracks) {
+        // 첫 번째 트랙의 ID를 반환
+        if (data.tracks.items.length > 0) {
+            return data.tracks.items[0].id;
+        }
+        }
+
+        return null;  // 트랙을 찾지 못한 경우 null을 반환
+    } catch (error) {
+        console.error('Error fetching track data:', error);
+        return null;
+    }
+    }
+
+    // 아티스트 정보 얻기
+    const artistName = '초승';
+    const trackname = '운이 좋았지';
+    const accessToken = 'BQB4hkPLlqLOJc-rXmTFrv7S-oJFaiRIRLvZd1nIiGTpnsGQGL6bE00eVb5jXQQlRvnyNOpGf3CARqq9l-IFWDgsjzjHf_j-ECWmplTA8HMzTJ_APkQ';
+
+    getArtistId(artistName, accessToken)
+    .then(artistId => console.log(artistId))
+    .catch(error => console.error(error));
+
+    getTrackId(trackName, accessToken)
+    .then(trackId => console.log(trackId))
+    .catch(error => console.error(error));
+
+  </script>
+  <div id="artist-id"></div>
+  <div id="track-id"></div>
+</body>
+</html
